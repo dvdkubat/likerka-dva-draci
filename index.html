@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Likérka Dva Draci — Nejlepší alkohol od roku 1437</title>
+
+<script defer data-domain="likerkadvadraci.cz" src="https://plausible.io/js/script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #d4a843;
+  --gold-light: #f0d080;
+  --gold-dark: #a07828;
+  --red: #c0392b;
+  --red-dark: #922b21;
+  --bg: #1c1710;
+  --bg2: #252018;
+  --bg3: #2e2820;
+  --border: #3a3228;
+  --text: #f0e6d0;
+  --text-muted: #b0987a;
+  --green: #27ae60;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* NOISE TEXTURE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(180deg, #1c1710 0%, #252018 100%);
+  border-bottom: 1px solid var(--gold-dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.topbar {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 20px;
+}
+
+.topbar-left { display: flex; align-items: center; }
+.topbar-right { display: flex; justify-content: flex-end; align-items: center; }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 90px;
+  filter: drop-shadow(0 2px 12px rgba(212,168,67,0.55));
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.logo:hover img {
+  filter: drop-shadow(0 2px 28px rgba(212,168,67,0.9));
+  transform: scale(1.04);
+}
+
+.logo-text { display: none; }
+
+.search-wrap {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-wrap input:focus {
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.1);
+}
+
+.search-wrap input::placeholder { color: var(--text-muted); }
+
+.search-wrap::before {
+  content: '⚗';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-dark);
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+nav a:hover { color: var(--gold); }
+
+.cart-btn {
+  background: var(--gold-dark) !important;
+  color: var(--bg) !important;
+  padding: 8px 16px !important;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s !important;
+}
+
+.cart-btn:hover { background: var(--gold) !important; }
+
+.cart-count {
+  background: var(--red);
+  color: white;
+  border-radius: 999px;
+  font-size: 10px;
+  padding: 1px 5px;
+  margin-left: 4px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* HERO BANNER */
+.hero-banner {
+  background: linear-gradient(135deg, #0a0805 0%, #1a0f05 50%, #0a0805 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+
+.hero-banner h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(20px, 4vw, 42px);
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(201,168,76,0.4);
+  margin-bottom: 8px;
+}
+
+.hero-banner p {
+  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 400px;
+  margin: 16px auto 0;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.divider span { color: var(--gold-dark); font-size: 18px; }
+
+/* LAYOUT */
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  max-width: 1400px;
+  margin: auto;
+  gap: 0;
+}
+
+/* SIDEBAR */
+.sidebar { padding: 24px 16px; }
+
+.ad {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold-dark);
+  padding: 16px 12px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  transition: border-color 0.2s;
+}
+
+.ad:hover { border-top-color: var(--gold); }
+
+.ad .ad-title {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.ad .ad-icon { font-size: 24px; margin-bottom: 6px; display: block; }
+
+.ad strong { color: var(--text); font-size: 13px; display: block; margin: 4px 0; }
+
+/* MAIN CONTENT */
+.container { padding: 32px 24px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dark), transparent);
+}
+
+/* FILTER TABS */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 6px 16px;
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text-muted);
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+
+.tab:hover, .tab.active {
+  border-color: var(--gold-dark);
+  color: var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+
+/* PRODUCTS GRID */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  cursor: pointer;
+}
+
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.15);
+  border-color: var(--gold-dark);
+}
+
+.product-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  background: var(--bg3);
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.product:hover .product-img-wrap img { transform: scale(1.05); }
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--red);
+  color: white;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 1px;
+  z-index: 2;
+}
+
+.badge.badge-new { background: var(--gold-dark); color: var(--bg); }
+.badge.badge-rare { background: #6c3483; }
+
+.product-info { padding: 16px; }
+
+.product-category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 6px;
+}
+
+.product h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.product-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.rating {
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating span { color: var(--text-muted); font-size: 11px; }
+
+.price {
+  color: var(--gold-light);
+  font-size: 22px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.price small {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+.btn-group { display: flex; gap: 8px; }
+
+.btn {
+  flex: 1;
+  padding: 9px 8px;
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 1px;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+  color: var(--bg);
+}
+
+.btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.btn-secondary:hover { border-color: var(--gold-dark); color: var(--gold); }
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.modal.open { display: flex; }
+
+.modal-content {
+  background: var(--bg2);
+  border: 1px solid var(--gold-dark);
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 2px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,168,76,0.1);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--bg3), var(--bg2));
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.modal-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.modal-header .modal-cat {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 1px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover { border-color: var(--red); color: var(--red); }
+
+.modal-body { padding: 28px; }
+
+.modal-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.modal-price {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+}
+
+.modal-desc {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.modal-btn-row { display: flex; gap: 10px; margin-bottom: 28px; }
+
+.modal-btn-row .btn { flex: 1; padding: 12px; font-size: 13px; }
+
+.reviews-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.review {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.review .reviewer {
+  font-size: 11px;
+  color: var(--gold-dark);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.review .stars { color: var(--gold); font-size: 11px; margin-bottom: 4px; }
+
+/* CART MODAL */
+.cart-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  margin: 20px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.cart-item .item-name { color: var(--text); }
+.cart-item .item-price { color: var(--gold); font-family: 'Cinzel', serif; }
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0 0;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--gold-light);
+}
+
+.form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+
+.form-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  border-radius: 1px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus { border-color: var(--gold-dark); }
+.form-input::placeholder { color: var(--text-muted); }
+
+/* LIVE TICKER */
+.live {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border-top: 1px solid var(--gold-dark);
+  padding: 10px 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 200;
+}
+
+.live::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 24px 80px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg2);
+  margin-top: 40px;
+}
+
+.footer-inner { max-width: 600px; margin: auto; }
+
+.footer-logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 20px;
+  color: var(--gold-dark);
+  margin-bottom: 12px;
+}
+
+.footer-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--border);
+  margin: 16px auto;
+}
+
+.sold-count {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--gold);
+}
+
+.warning {
+  margin-top: 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--gold-dark);
+  border-left: 3px solid var(--gold);
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--text);
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  z-index: 600;
+  max-width: 280px;
+}
+
+.toast.show { transform: translateX(0); }
+
+/* EMPTY CART */
+.empty-cart {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.empty-cart .empty-icon { font-size: 48px; margin-bottom: 12px; }
+
+/* SORT BAR */
+.sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sort-select {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 10px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.sort-select:focus { border-color: var(--gold-dark); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .topbar { flex-wrap: wrap; }
+  .search-wrap { order: 3; flex: 1 1 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a href="#" class="logo">
+      <img src="logo.png" alt="Dva Draci">
+      <div class="logo-text">
+        <span class="brand">Dva Draci</span>
+        <span class="tagline">Likérka od roku 1437</span>
+      </div>
+    </a>
+
+    <div class="search-wrap">
+      <input id="search" placeholder="Hledat lihovinu...">
+    </div>
+
+    <nav>
+      <a href="#">Produkty</a>
+      <a href="#">O nás</a>
+      <a href="#">Doprava</a>
+      <a href="#">Kontakt</a>
+      <a class="cart-btn" onclick="openCart()">🛒 Košík <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero-banner">
+  <h1>🐉 Likérka Dva Draci 🐉</h1>
+  <p>Výběrové lihoviny · Pochybný původ · Zaručená kvalita</p>
+  <div class="divider"><span>✦</span></div>
+</div>
+
+<div class="layout">
+
+  <div class="sidebar">
+    <div class="ad">
+      <span class="ad-icon">🏭</span>
+      <div class="ad-title">Sponzor</div>
+      <strong>Chemické potřeby Novák</strong>
+      Vše pro domácí výrobu alkoholu
+    </div>
+    <div class="ad">
+      <span class="ad-icon">⚖️</span>
+      <div class="ad-title">Právní poradenství</div>
+      <strong>Advokát Pít & Mlčet</strong>
+      Celní přestupky od 2000 Kč
+    </div>
+    <div class="ad">
+      <span class="ad-icon">🔥</span>
+      <div class="ad-title">Sleva týdne</div>
+      <strong>Drak Reserve 96%</strong>
+      Jen do vyprodání zásob (nebo do zatčení)
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="section-title">Nejprodávanější produkty</div>
+
+    <div class="filter-tabs" id="filterTabs">
+      <div class="tab active" onclick="filterCategory('all', this)">Vše</div>
+      <div class="tab" onclick="filterCategory('speciality', this)">Speciality</div>
+      <div class="tab" onclick="filterCategory('klasika', this)">Klasika</div>
+      <div class="tab" onclick="filterCategory('laborator', this)">Laboratorní řada</div>
+      <div class="tab" onclick="filterCategory('reserve', this)">Reserve</div>
+    </div>
+
+    <div class="sort-bar">
+      <span id="productCount">Zobrazeno 12 produktů</span>
+      <select class="sort-select" id="sortSelect" onchange="sortProducts()">
+        <option value="default">Řadit: Doporučené</option>
+        <option value="price-asc">Cena: nejnižší</option>
+        <option value="price-desc">Cena: nejvyšší</option>
+        <option value="name">Název A–Z</option>
+      </select>
+    </div>
+
+    <div class="products" id="products"></div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="ad">
+      <span class="ad-icon">📜</span>
+      <div class="ad-title">Historie</div>
+      <strong>Destilace od roku 1437</strong>
+      3 generace, 47 trestních oznámení
+    </div>
+    <div class="ad">
+      <span class="ad-icon">💎</span>
+      <div class="ad-title">Limitované edice</div>
+      <strong>Pouze 6 lahví</strong>
+      Každá jiná, žádná schválená
+    </div>
+    <div class="ad">
+      <span class="ad-icon">🍷</span>
+      <div class="ad-title">Degustace</div>
+      <strong>Každou sobotu</strong>
+      (Přivezte vlastního lékaře)
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<div class="live" id="live">Připojeno k serveru prodejů...</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Dva Draci</div>
+    <div class="footer-divider"></div>
+    <div class="sold-count">🍾 Prodáno lahví celkem: <span id="sold"></span></div>
+    <div class="footer-divider"></div>
+    <div class="warning">⚠️ Tento web je parodický projekt. Veškeré produkty jsou fiktivní.<br>Konzumace alkoholu škodí zdraví. Zákaz prodeje osobám mladším 18 let a celní správě.</div>
+  </div>
+</footer>
+
+<script>
+const products = [
+  // Speciality
+  { id:1,  name:"Slepecká hůl", category:"speciality", badge:"TOP", price:199, img:"https://picsum.photos/seed/p1/400/300", desc:"Tajná receptura od roku 1952. Říká se, že po první lahvi opravdu nevidíte cestu domů." },
+  { id:2,  name:"Samohonka Premium", category:"klasika", badge:"TOP", price:149, img:"https://picsum.photos/seed/p2/400/300", desc:"Klasická samohonka z vyzkoušeného rodinného receptu. Bez přísad, zato s příběhem." },
+  { id:3,  name:"Technický rum", category:"laborator", badge:"TOP", price:179, img:"https://picsum.photos/seed/p3/400/300", desc:"Původně určen k odmašťování. Pak jsme ho ochutnali. Teď ho prodáváme." },
+  { id:4,  name:"Turbo Tuzemák", category:"klasika", badge:null, price:159, img:"https://picsum.photos/seed/p4/400/300", desc:"Rychlý jako turbína, plynný jako... no, zkrátka plynný." },
+  { id:5,  name:"Laboratorní speciál", category:"laborator", badge:"RARE", price:299, img:"https://picsum.photos/seed/p5/400/300", desc:"Vyráběn v podmínkách přísné hygieny. Nebo aspoň skoro přísné." },
+  { id:6,  name:"Oční kapky EXTRA", category:"laborator", badge:null, price:139, img:"https://picsum.photos/seed/p6/400/300", desc:"Nepoužívejte jako oční kapky. Upřímně vám to říkáme." },
+  { id:7,  name:"Průmyslová švestka", category:"speciality", badge:"NEW", price:189, img:"https://picsum.photos/seed/p7/400/300", desc:"Švestkovice z průmyslové zóny. Teroir jako žádný jiný." },
+  { id:8,  name:"Drak Reserve 96%", category:"reserve", badge:"RARE", price:349, img:"https://picsum.photos/seed/p8/400/300", desc:"Naše vlajkový produkt. 96% alkohol, 4% záhada. Pouze pro zkušené." },
+  { id:9,  name:"Záhadná tekutina č.7", category:"laborator", badge:"NEW", price:219, img:"https://picsum.photos/seed/p9/400/300", desc:"Čísla 1–6 nešla do prodeje. Číslo 7 ano. Neptejte se proč." },
+  { id:10, name:"Měsíční svit", category:"speciality", badge:null, price:249, img:"https://picsum.photos/seed/p10/400/300", desc:"Destilováno výhradně o úplňku. Vliv na příliv a odliv žaludku zaručen." },
+  { id:11, name:"Hadí jed light", category:"reserve", badge:"NEW", price:279, img:"https://picsum.photos/seed/p11/400/300", desc:"Light verze našeho nejobávanějšího produktu. Jen mírně jedovatý." },
+  { id:12, name:"Starý otec 12 let", category:"reserve", badge:null, price:399, img:"https://picsum.photos/seed/p12/400/300", desc:"12 let zrající v sudu. Nebo 12 let zapomenutý ve skladu. Těžko říct." },
+];
+
+const reviewNames = ["Honza K.", "Petra M.", "Radek B.", "Ivana Š.", "Miroslav D.", "Jana V.", "Tomáš N.", "Lucie F.", "Pavel Č.", "Markéta H."];
+const reviewTexts = [
+  "Po dvou panácích jsem zapomněl proč jsem přišel, ale byl to báječný večer.",
+  "Chuť je silná. Paměť už méně. Znovu objednávám.",
+  "Objednal jsem jednu láhev, probudil jsem se se třemi. Přidávám pátou hvězdu.",
+  "Po třetím panáku je všechno jedno. Opravdu všechno.",
+  "5/5 – doporučuji i nepřátelům. Hlavně nepřátelům.",
+  "Ráno jsem našel prázdnou láhev a nové přátele, které neznám.",
+  "Nejdřív pálí, pak nepálí nic. Přesně jak má být.",
+  "Dodáno rychle, zásilka přišla celá. Bohužel.",
+  "Můj lékař říkal abych nekupoval. Koupil jsem dvě láhve.",
+  "Překvapivě chutné, pokud si zvyknete na pachu.",
+  "Ideální dárek pro tchyni. Nebo ex-přítele.",
+  "Otevřeli jsme na Silvestra a skončilo to hasičským zásahem.",
+  "Zkoušel jsem dražší alternativy. Tohle je jiné. Jiné v tom nejlepším smyslu.",
+  "Zákazník roku 2023 a 2024. Pracuji na roku 2025.",
+  "Nedávejte to dětem. To je vše co k tomu řeknu.",
+];
+
+function getUniqueReviews(count = 3) {
+  const shuffled = [...reviewTexts].sort(() => Math.random() - 0.5);
+  const selectedTexts = shuffled.slice(0, count);
+  const shuffledNames = [...reviewNames].sort(() => Math.random() - 0.5);
+  return selectedTexts.map((text, i) => ({
+    name: shuffledNames[i % shuffledNames.length],
+    text
+  }));
+}
+
+function renderReviews(count = 3) {
+  return getUniqueReviews(count).map(r => `
+    <div class="review">
+      <div class="reviewer">${r.name}</div>
+      <div class="stars">★★★★★</div>
+      ${r.text}
+    </div>
+  `).join('');
+}
+
+let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+let currentFilter = 'all';
+let currentSort = 'default';
+
+function getBadgeClass(badge) {
+  if (badge === 'NEW') return 'badge badge-new';
+  if (badge === 'RARE') return 'badge badge-rare';
+  return 'badge';
+}
+
+function renderProducts(list = products) {
+  const container = document.getElementById('products');
+  document.getElementById('productCount').textContent = `Zobrazeno ${list.length} produktů`;
+  if (list.length === 0) {
+    container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-muted);">
+      <div style="font-size:36px;margin-bottom:12px">🔍</div>
+      Žádné produkty nenalezeny.
+    </div>`;
+    return;
+  }
+  container.innerHTML = list.map(p => `
+    <div class="product" onclick="detail(${p.id})">
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.badge ? `<div class="${getBadgeClass(p.badge)}">${p.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${getCategoryLabel(p.category)}</div>
+        <h3>${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="rating">★★★★★ <span>(${Math.floor(Math.random()*80+20)} recenzí)</span></div>
+        <div class="price">${p.price} <small>Kč</small></div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="event.stopPropagation();detail(${p.id})">Detail</button>
+          <button class="btn btn-primary" onclick="event.stopPropagation();addToCart(${p.id})">Do košíku</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getCategoryLabel(cat) {
+  const map = { speciality:'Specialita', klasika:'Klasika', laborator:'Laboratorní řada', reserve:'Reserve' };
+  return map[cat] || cat;
+}
+
+function filterCategory(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  applyFiltersAndSort();
+}
+
+function sortProducts() {
+  currentSort = document.getElementById('sortSelect').value;
+  applyFiltersAndSort();
+}
+
+function applyFiltersAndSort() {
+  let list = currentFilter === 'all' ? [...products] : products.filter(p => p.category === currentFilter);
+  const q = document.getElementById('search').value.toLowerCase();
+  if (q) list = list.filter(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+  if (currentSort === 'price-asc') list.sort((a,b) => a.price - b.price);
+  else if (currentSort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  else if (currentSort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+  renderProducts(list);
+}
+
+function detail(id) {
+  const p = products.find(x => x.id === id);
+  const reviewCount = Math.floor(Math.random() * 2) + 2; // 2–3 reviews
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-cat">${getCategoryLabel(p.category)}</div>
+      <h2>${p.name}</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <img class="modal-img" src="${p.img.replace('400/300','600/400')}" alt="${p.name}">
+      <div class="modal-price">${p.price} <small style="font-size:14px;color:var(--text-muted);font-family:Lato">Kč / láhev</small></div>
+      <p class="modal-desc">${p.desc}</p>
+      <div class="modal-btn-row">
+        <button class="btn btn-primary" onclick="addToCart(${p.id})">🛒 Přidat do košíku</button>
+        <button class="btn btn-secondary" onclick="closeModal()">Zpět</button>
+      </div>
+      <div class="reviews-title">Zákaznické recenze</div>
+      ${renderReviews(reviewCount)}
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+function addToCart(id) {
+  cart.push(id);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+  showToast('✓ Přidáno do košíku');
+}
+
+function updateCart() {
+  document.getElementById('cartCount').textContent = cart.length;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function openCart() {
+  let html = `
+    <div class="modal-header">
+      <div class="modal-cat">Váš výběr</div>
+      <h2>🛒 Košík</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+  `;
+
+  if (cart.length === 0) {
+    html += `<div class="empty-cart"><div class="empty-icon">🛒</div>Košík je prázdný.<br><br><button class="btn btn-secondary" onclick="closeModal()">Zpět do obchodu</button></div>`;
+  } else {
+    const counts = {};
+    cart.forEach(id => counts[id] = (counts[id] || 0) + 1);
+    let total = 0;
+    let itemsHtml = '';
+    Object.entries(counts).forEach(([id, qty]) => {
+      const p = products.find(x => x.id == id);
+      const subtotal = p.price * qty;
+      total += subtotal;
+      itemsHtml += `<div class="cart-item">
+        <span class="item-name">${p.name} ${qty > 1 ? `(×${qty})` : ''}</span>
+        <span class="item-price">${subtotal} Kč</span>
+      </div>`;
+    });
+    html += `
+      <div class="cart-section-title">Produkty</div>
+      ${itemsHtml}
+      <div class="cart-total"><span>Celkem</span><span>${total} Kč</span></div>
+      <div class="cart-section-title" style="margin-top:24px">Doručovací údaje</div>
+      <div class="form-row">
+        <input class="form-input" placeholder="Jméno a příjmení">
+        <input class="form-input" placeholder="Telefon">
+      </div>
+      <div class="form-row">
+        <input class="form-input" placeholder="Ulice a číslo">
+      </div>
+      <div class="form-row">
+        <input class="form-input" placeholder="PSČ">
+        <input class="form-input" placeholder="Město">
+      </div>
+      <div style="margin-top:16px;display:flex;gap:10px;">
+        <button class="btn btn-primary" style="flex:2;padding:14px" onclick="fakeOrder()">Dokončit objednávku</button>
+        <button class="btn btn-secondary" style="flex:1;padding:14px" onclick="clearCart()">Vyprázdnit</button>
+      </div>
+      <div class="cart-section-title" style="margin-top:24px">Sledování zásilky</div>
+      <div class="form-row">
+        <input class="form-input" placeholder="Zadejte tracking číslo">
+        <button class="btn btn-secondary" style="padding:10px 16px;white-space:nowrap" onclick="track()">Sledovat</button>
+      </div>
+    `;
+  }
+  html += '</div>';
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modal').classList.add('open');
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+  closeModal();
+  showToast('Košík byl vyprázdněn');
+}
+
+function fakeOrder() {
+  closeModal();
+  showToast('⚠️ Likérka uzavřena celní správou');
+}
+
+function track() {
+  showToast('📦 Zásilka: U kurýra (pravděpodobně)');
+}
+
+document.getElementById('search').addEventListener('input', applyFiltersAndSort);
+
+const cities = ["Praha", "Brno", "Ostrava", "Plzeň", "Liberec", "Olomouc", "Zlín", "Hradec Králové"];
+function fakePurchase() {
+  const city = cities[Math.floor(Math.random() * cities.length)];
+  const p = products[Math.floor(Math.random() * products.length)];
+  document.getElementById('live').textContent = `Právě si někdo z ${city} koupil: ${p.name}`;
+}
+
+document.getElementById('sold').textContent = (Math.floor(Math.random() * 5000 + 1000)).toLocaleString('cs-CZ');
+updateCart();
+renderProducts();
+setInterval(fakePurchase, 8000);
+</script>
+
+</body>
+</html>
