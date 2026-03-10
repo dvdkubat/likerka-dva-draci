@@ -17,6 +17,7 @@ const reviewTexts = [
   "Zkoušel jsem dražší alternativy. Tohle je jiné. Jiné v tom nejlepším smyslu.",
   "Zákazník roku 2024 a 2025. Pracuji na roku 2026.",
   "Nedávejte to dětem. To je vše co k tomu řeknu.",
-  "11 z 10 Radků doporučuje.",
+  "11 z 10 Radků doporučuje."
 
 ];
+
