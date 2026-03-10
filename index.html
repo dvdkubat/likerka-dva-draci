@@ -1343,6 +1343,7 @@ function detail(id) {
     </div>
   `;
   document.getElementById('modal').classList.add('open');
+  history.replaceState(null, '', '#produkt-' + id);
 
   // 15% šance na automatické přidání do košíku
   if (Math.random() < 0.15) {
@@ -1355,6 +1356,9 @@ function detail(id) {
 
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
+  if (window.location.hash.startsWith('#produkt-')) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
 }
 
 
@@ -1476,6 +1480,18 @@ document.getElementById('sold').textContent = (Math.floor(Math.random() * 5000 +
 updateCart();
 renderProducts();
 setInterval(fakePurchase, 8000);
+
+// ── DEEP LINKS ────────────────────────────────────────────────────
+// Formát: index.html#produkt-8  otevře rovnou detail produktu s id 8
+// Spouštíme až po renderProducts(), kdy jsou produkty dostupné
+function handleDeepLink() {
+  const match = window.location.hash.match(/^#produkt-([0-9]+)$/);
+  if (!match) return;
+  const id = parseInt(match[1]);
+  const p = products.find(x => x.id === id);
+  if (p) detail(id);
+}
+handleDeepLink();
 
 function scrollToProducts() {
   document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
