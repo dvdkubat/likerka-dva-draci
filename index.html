@@ -478,15 +478,21 @@ nav a:hover { color: var(--gold); }
 .product-img-wrap {
   position: relative;
   overflow: hidden;
-  height: 200px;
+  height: 220px;
   background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   transition: transform 0.4s;
+  padding: 8px;
 }
 
 .product:hover .product-img-wrap img { transform: scale(1.05); }
@@ -665,12 +671,17 @@ nav a:hover { color: var(--gold); }
 .modal-body { padding: 28px; }
 
 .modal-img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+  display: block;
+  max-width: 340px;
+  max-height: 420px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   border-radius: 2px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   border: 1px solid var(--border);
+  background: var(--bg3);
+  padding: 12px;
 }
 
 .modal-price {
@@ -898,11 +909,109 @@ footer {
 
 .sort-select:focus { border-color: var(--gold-dark); }
 
+/* ── MOBILNÍ LAYOUT ── */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .sidebar { display: none; }
-  .topbar { flex-wrap: wrap; }
-  .search-wrap { order: 3; flex: 1 1 100%; }
+}
+
+@media (max-width: 768px) {
+  /* Header: logo nahoře na středu, pod tím search + cart */
+  .topbar {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+  .topbar-left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .logo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-content: center;
+  }
+  .logo img { height: 64px; }
+  .topbar-right {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  /* Schovat textové nav odkazy, nechat jen košík */
+  nav a:not(.cart-btn) { display: none; }
+  /* Hamburger menu */
+  .mobile-menu-btn {
+    display: flex !important;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-right: 6px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .mobile-menu-btn:hover { border-color: var(--gold-dark); color: var(--gold); }
+  .search-wrap { max-width: 100%; }
+  .search-wrap input { font-size: 16px; /* zabrání zoomu na iOS */ }
+
+  /* Mobile nav drawer */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--gold-dark);
+    padding: 8px 0;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+  }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
+
+  /* Hero */
+  .hero-banner { padding: 24px 16px; }
+  .hero-banner h1 { font-size: 22px; }
+
+  /* Produkty: 2 sloupce na tabletu, 1 na malém mobilu */
+  .products { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .container { padding: 20px 14px; }
+
+  /* Filter tabs scrollovatelné */
+  .filter-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .filter-tabs::-webkit-scrollbar { height: 3px; }
+  .filter-tabs::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+  .tab { white-space: nowrap; flex-shrink: 0; }
+
+  /* Modal na celou obrazovku */
+  .modal { padding: 0; align-items: flex-end; }
+  .modal-content { max-width: 100%; width: 100%; max-height: 92vh; border-radius: 8px 8px 0 0; border-left: none; border-right: none; }
+  .modal-img { height: 180px; }
+
+  /* Live ticker */
+  .live { font-size: 11px; padding: 8px 14px; }
+
+  /* Kontakt grid */
+  .contact-grid { grid-template-columns: 1fr; }
+
+  /* Cart */
+  .cart-count { display: inline; }
+  .sort-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+@media (max-width: 420px) {
+  .products { grid-template-columns: 1fr; }
+  .btn-group { flex-direction: column; }
 }
 
 /* INFO PAGE MODAL */
@@ -975,6 +1084,9 @@ footer {
 }
 .doprava-table tr:last-child td { border-bottom: none; }
 .doprava-table td:first-child { color: var(--text); }
+
+.mobile-menu-btn { display: none; } /* skrytý na desktopu */
+.mobile-nav { display: none; } /* skrytý na desktopu */
 </style>
 </head>
 
@@ -994,6 +1106,7 @@ footer {
 
     <div class="topbar-right">
       <nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
         <a href="#" onclick="scrollToProducts()">Produkty</a>
         <a href="#" onclick="openPage('onas')">O nás</a>
         <a href="#" onclick="openPage('doprava')">Doprava</a>
@@ -1001,6 +1114,13 @@ footer {
         <a class="cart-btn" onclick="openCart()">🛒 Košík <span class="cart-count" id="cartCount">0</span></a>
       </nav>
     </div>
+  </div>
+  <!-- Mobile navigation drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#" onclick="scrollToProducts();closeMobileMenu()">🍾 Produkty</a>
+    <a href="#" onclick="openPage('onas');closeMobileMenu()">🐉 O nás</a>
+    <a href="#" onclick="openPage('doprava');closeMobileMenu()">🚚 Doprava</a>
+    <a href="#" onclick="openPage('kontakt');closeMobileMenu()">📬 Kontakt</a>
   </div>
 </header>
 
@@ -1043,6 +1163,8 @@ footer {
       <div class="tab" onclick="filterCategory('klasika', this)">Klasika</div>
       <div class="tab" onclick="filterCategory('laborator', this)">Laboratorní řada</div>
       <div class="tab" onclick="filterCategory('reserve', this)">Reserve</div>
+      <div class="tab" onclick="filterCategory('export', this)">Export</div>
+      <div class="tab" onclick="filterCategory('original', this)">Originál</div>
     </div>
 
     <div class="sort-bar">
@@ -1096,45 +1218,20 @@ footer {
     <div class="footer-divider"></div>
     <div class="sold-count">🍾 Prodáno lahví celkem: <span id="sold"></span></div>
     <div class="footer-divider"></div>
-    <div class="warning">⚠️ Tento web je parodický projekt. Veškeré produkty jsou fiktivní.<br>Konzumace alkoholu škodí zdraví. Zákaz prodeje osobám mladším 18 let a celní správě.</div>
+    <div class="warning">⚠️ Tento web je parodický projekt. Veškeré produkty jsou fiktivní.<br>Konzumace alkoholu škodí zdraví. Zákaz prodeje osobám mladším 18 let a celní správě 🖕.</div>
   </div>
 </footer>
 
-<script>
-const products = [
-  // Speciality samohonka_pro.png
-  { id:1,  name:"Slepecká hůl", category:"speciality", badge:"TOP", price:199, img:"./img/slepecka_hul.png", desc:"Tajná receptura od roku 1952. Říká se, že po první lahvi opravdu nevidíte cestu domů." },
-  { id:2,  name:"Samohonka Premium", category:"klasika", badge:"TOP", price:149, img:"./img/samohonka_pro.png", desc:"Klasická samohonka z vyzkoušeného rodinného receptu. Bez přísad, zato s příběhem." },
-  { id:3,  name:"Technický rum", category:"laborator", badge:"TOP", price:179, img:"./img/technicky_rum.png", desc:"Původně určen k odmašťování. Pak jsme ho ochutnali. Teď ho prodáváme." },
-  { id:4,  name:"Turbo Tuzemák", category:"klasika", badge:null, price:159, img:"./img/tuzemak.png", desc:"Rychlý jako turbína, plynný jako... no, zkrátka plynný." },
-  { id:5,  name:"Laboratorní speciál", category:"laborator", badge:"RARE", price:299, img:"./img/empty.png", desc:"Vyráběn v podmínkách přísné hygieny. Nebo aspoň skoro přísné." },
-  { id:6,  name:"Oční kapky EXTRA", category:"laborator", badge:null, price:139, img:"./img/ocni_kapky.png", desc:"Nepoužívejte jako oční kapky. Upřímně vám to říkáme." },
-  { id:7,  name:"Průmyslová švestka", category:"speciality", badge:"NEW", price:189, img:"./img/empty.png", desc:"Švestkovice z průmyslové zóny. Teroir jako žádný jiný." },
-  { id:8,  name:"Drak Reserve 96%", category:"reserve", badge:"RARE", price:349, img:"./img/drak_reserve.png", desc:"Naše vlajkový produkt. 96% alkohol, 4% záhada. Pouze pro zkušené." },
-  { id:9,  name:"Záhadná tekutina č.7", category:"laborator", badge:"NEW", price:219, img:"./img/empty.png", desc:"Čísla 1–6 nešla do prodeje. Číslo 7 ano. Neptejte se proč." },
-  { id:10, name:"Měsíční svit", category:"speciality", badge:null, price:249, img:"./img/empty.png", desc:"Destilováno výhradně o úplňku. Vliv na příliv a odliv žaludku zaručen." },
-  { id:11, name:"Hadí jed light", category:"reserve", badge:"NEW", price:279, img:"./img/empty.png", desc:"Light verze našeho nejobávanějšího produktu. Jen mírně jedovatý." },
-  { id:12, name:"Starý otec 12 let", category:"reserve", badge:null, price:399, img:"./img/empty.png", desc:"12 let zrající v sudu. Nebo 12 let zapomenutý ve skladu. Těžko říct." },
-];
 
-const reviewNames = ["Honza K.", "Petra M.", "Radek B.", "Ivana Š.", "Miroslav D.", "Jana V.", "Tomáš N.", "Lucie F.", "Pavel Č.", "Markéta H."];
-const reviewTexts = [
-  "Po dvou panácích jsem zapomněl proč jsem přišel, ale byl to báječný večer.",
-  "Chuť je silná. Paměť už méně. Znovu objednávám.",
-  "Objednal jsem jednu láhev, probudil jsem se se třemi. Přidávám pátou hvězdu.",
-  "Po třetím panáku je všechno jedno. Opravdu všechno.",
-  "5/5 – doporučuji i nepřátelům. Hlavně nepřátelům.",
-  "Ráno jsem našel prázdnou láhev a nové přátele, které neznám.",
-  "Nejdřív pálí, pak nepálí nic. Přesně jak má být.",
-  "Dodáno rychle, zásilka přišla celá. Bohužel.",
-  "Můj lékař říkal abych nekupoval. Koupil jsem dvě láhve.",
-  "Překvapivě chutné, pokud si zvyknete na pachu.",
-  "Ideální dárek pro tchyni. Nebo ex-přítele.",
-  "Otevřeli jsme na Silvestra a skončilo to hasičským zásahem.",
-  "Zkoušel jsem dražší alternativy. Tohle je jiné. Jiné v tom nejlepším smyslu.",
-  "Zákazník roku 2023 a 2024. Pracuji na roku 2025.",
-  "Nedávejte to dětem. To je vše co k tomu řeknu.",
-];
+
+<script src="./products.js"></script>
+<script src="./reviews.js"></script>
+
+
+<script>
+
+
+
 
 function getUniqueReviews(count = 3) {
   const shuffled = [...reviewTexts].sort(() => Math.random() - 0.5);
@@ -1185,7 +1282,7 @@ function renderProducts(list = products) {
       <div class="product-info">
         <div class="product-category">${getCategoryLabel(p.category)}</div>
         <h3>${p.name}</h3>
-        <p class="product-desc">${p.desc}</p>
+        <p class="product-desc">${p.desc.length > 60 ? p.desc.substring(0, 60) + '…' : p.desc}</p>
         <div class="rating">★★★★★ <span>(${Math.floor(Math.random()*80+20)} recenzí)</span></div>
         <div class="price">${p.price} <small>Kč</small></div>
         <div class="btn-group">
@@ -1198,7 +1295,7 @@ function renderProducts(list = products) {
 }
 
 function getCategoryLabel(cat) {
-  const map = { speciality:'Specialita', klasika:'Klasika', laborator:'Laboratorní řada', reserve:'Reserve' };
+  const map = { speciality:'Specialita', klasika:'Klasika', laborator:'Laboratorní řada', reserve:'Reserve', export:'Export', original:'Originál' };
   return map[cat] || cat;
 }
 
@@ -1246,15 +1343,32 @@ function detail(id) {
     </div>
   `;
   document.getElementById('modal').classList.add('open');
+
+  // 15% šance na automatické přidání do košíku
+  if (Math.random() < 0.15) {
+    setTimeout(() => {
+      addToCart(p.id);
+      showToast('🛒 Produkt byl automaticky přidán do košíku!');
+    }, 800);
+  }
 }
 
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
 }
 
+
+function toggleMobileMenu() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+// Zavřít mobilní menu při kliknutí na modal
 document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
+  if (e.target === document.getElementById('modal')) { closeModal(); closeMobileMenu(); }
 });
+
 
 function addToCart(id) {
   cart.push(id);
