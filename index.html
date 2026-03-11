@@ -1472,11 +1472,11 @@ function track() {
 
 document.getElementById('search').addEventListener('input', applyFiltersAndSort);
 
-const cities = ["Praha", "Brno", "Ostrava", "Plzeň", "Liberec", "Olomouc", "Zlín", "Hradec Králové"];
+const cities = ["z Prahy", "z Brna", "z Ostravy", "z Plzeně", "z Liberece", "z Olomouce", "ze Zlína", "z Hradce Králové", "z Jihlavy", "ze Slovenska"];
 function fakePurchase() {
   const city = cities[Math.floor(Math.random() * cities.length)];
   const p = products[Math.floor(Math.random() * products.length)];
-  document.getElementById('live').textContent = `Právě si někdo z ${city} koupil: ${p.name}`;
+  document.getElementById('live').textContent = `Právě si někdo ${city} koupil: ${p.name}`;
 }
 
 document.getElementById('sold').textContent = (Math.floor(Math.random() * 5000 + 1000)).toLocaleString('cs-CZ');
