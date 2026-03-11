@@ -25,10 +25,11 @@ const products = [
 //{ id:22, name:"Pamětník", category:"klasika", badge:null, price:149, img:"./img/pametnik.png", desc:"Láhev pamatuje hodně. Ty to štěstí mít nebudeš. Ideální volba pro večery, na které chceš zapomenout." },
 { id:23, name:"Ohnivý Nádech", category:"speciality", badge:"RARE", price:299, img:"./img/ohnivy_nadech.png", desc:"Jeden panák a pochopíš, proč draci chrlí oheň. Doporučujeme nepřibližovat se k otevřenému plameni, grilu ani tankovat auto." },
 //{ id:24, name:"Startovací Kapalina", category:"laborator", badge:"NEW", price:179, img:"./img/startovaci_kapalina.png", desc:"Nastartuje večer rychleji než taurín a kafe. Pokud po prvním panáku necítíš změnu, zkus druhý – motor i nálada se obvykle chytí. Startuješ až po pátem panáku? Něco je s tebou špatně, zavolej nám, zaměstnáme tě." },
-{ id:25, name:"Respawn", category:"laborator", badge:"TOP", price:249, img:"./img/respawn.png", desc:"Ideální nápoj pro návrat do hry po náročné noci. Paměť se sice nenačte, ale energie na další kolo se většinou objeví. Silný nápoj a s velkou silou, přichází velká zodpovědnost - po přílišné konzumaci hrozí finální šlofík. 💀" },
+{ id:25, name:"Respawn", category:"laborator", badge:"TOP", price:249, img:"./img/respawn.png", desc:"Ideální nápoj pro návrat do hry po náročné noci. Paměť se sice nenačte, ale energie na další kolo se většinou objeví. Velmi silný nápoj. S velkou silou, přichází velká zodpovědnost - přílišná konzumace může mít za následek finálního šlofíka. 💀" },
 { id:26, name:"Tombola", category:"speciality", badge:"NEW", price:199, img:"./img/tombola.png", desc:"Dopiš věnování, nebo pij jen tak! Nikdy nevíš, co vyhraješ. Někdy skvělou chuť, jindy bolest hlavy. Každá láhev je malé překvapení." }
 
 ];
+
 
 
 
