@@ -33,158 +33,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2605897423650206"
      crossorigin="anonymous"></script>
 
-<script defer data-domain="likerkadvadraci.cz" src="https://plausible.io/js/script.js">
-function scrollToProducts() {
-  document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-}
-
-function openPage(page) {
-  let html = '';
-  if (page === 'onas') {
-    html = `
-      <div class="modal-header">
-        <div class="modal-cat">Náš příběh</div>
-        <h2>🐉 O nás</h2>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div class="info-page">
-        <div class="info-section">
-          <h3>Kdo jsme</h3>
-          <p>Jsme rodinná likérka Dva Draci, která pálí od nevidím do nevidím od roku 1437. Přesněji řečeno — od té doby, co praprababička Božena objevila, že obilí lze zpracovat i jinak než upéct z něj chléb.</p>
-          <p>Provoz nikdy nebyl přerušen, a to ani za Josefa II., ani za protektorátu, ani za socialismu. Celní správa se o nás zajímá pravidelně, ale zatím jsme vždy přežili.</p>
-          <div class="info-highlight">
-            „Destilujeme s láskou, bez povolení a s minimálními ztrátami na majetku."<br>
-            <em>— Vladimír Drak, současný majitel (v péči lékařů)</em>
-          </div>
-        </div>
-        <div class="info-section">
-          <h3>Naše hodnoty</h3>
-          <p>🔥 <strong style="color:var(--text)">Vášeň</strong> — Každou lahev plníme s upřímným zanícením. A se zavřenýma očima.</p>
-          <p>⚗️ <strong style="color:var(--text)">Řemeslo</strong> — Destilujeme ručně, v měděných kotlích zakoupených na bleším trhu v Chebu.</p>
-          <p>📜 <strong style="color:var(--text)">Tradice</strong> — Recepty předávané z generace na generaci, přičemž každá generace něco ztratila a něco přidala. Výsledek je… originální.</p>
-          <p>🤫 <strong style="color:var(--text)">Diskrétnost</strong> — Co se děje ve skladu, zůstane ve skladu. Doporučujeme totéž zákazníkům.</p>
-        </div>
-        <div class="info-section">
-          <h3>Náš tým</h3>
-          <p><strong style="color:var(--text)">Vladimír Drak</strong> — Majitel, hlavní destilér, příležitostný pacient. Pracuje denně od 4:30 do 4:29.</p>
-          <p><strong style="color:var(--text)">Mirka Draková</strong> — Účetní, PR manažerka, krizová komunikace s celní správou. Drží firmu při životě.</p>
-          <p><strong style="color:var(--text)">Franta "Chemik" Skála</strong> — Technolog. Vzdělání neuvedeno. Reference výborné. Diplom umazán od lihu.</p>
-          <p><strong style="color:var(--text)">Pes Slivovitz</strong> — Ochranka. V provozu od 22:00.</p>
-        </div>
-        <div class="info-section">
-          <h3>Příjmáme</h3>
-          <p><strong style="color:var(--text)">Skladník</strong> — Náš stávající skladník zmizel bezeslova v průběhu směny. Přijmeme zkušenou náhradu. Řidičský průkaz výhodou. Práce v čistém a bezpečném prostředí.</p>
-        </div>
-        <div class="info-section" style="padding-bottom:28px">
-          <h3>Ocenění a certifikáty</h3>
-          <p>🥇 Nejlepší samohonka Jihomoravského kraje 2019 <em style="color:var(--text-muted);font-size:12px">(neoficiální soutěž, organizátor anonymní)</em></p>
-          <p>🏆 Zlatá destila Cheb 2021 <em style="color:var(--text-muted);font-size:12px">(trofej zadržena při celní kontrole)</em></p>
-          <p>📋 Hygienický průkaz <em style="color:var(--text-muted);font-size:12px">(platný do 2018, obnovení vyřizujeme)</em></p>
-        </div>
-      </div>
-    `;
-  } else if (page === 'doprava') {
-    html = `
-      <div class="modal-header">
-        <div class="modal-cat">Logistika</div>
-        <h2>🚚 Doprava & doručení</h2>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div class="info-page">
-        <div class="info-section">
-          <h3>Možnosti doručení</h3>
-          <table class="doprava-table">
-            <tr><th>Způsob</th><th>Doba</th><th>Cena</th></tr>
-            <tr><td>Zásilkovna</td><td>2–5 pracovních dní</td><td>89 Kč</td></tr>
-            <tr><td>Zásilkovna (express)</td><td>1–3 pracovní dny</td><td>149 Kč</td></tr>
-            <tr><td>Osobní odběr (sklad)</td><td>Po domluvě</td><td>Zdarma</td></tr>
-            <tr><td>Kurýr Franta</td><td>"Přijdu až budu moct"</td><td>50 Kč + spropitné</td></tr>
-            <tr><td>Poštovní holub</td><td>Sezonní</td><td>Experimentální</td></tr>
-          </table>
-        </div>
-        <div class="info-section">
-          <h3>Věkové ověření</h3>
-          <p>Zásilkovna doručuje zásilky osobám starším 18 let. Na tuto podmínku jsme zapomněli zmínit při uzavírání smlouvy s dopravcem, takže momentálně doručujeme bez omezení.</p>
-          <div class="info-highlight">
-            Zákonný zástupce přebírá odpovědnost za zásilky adresované osobám mladším 18 let. A za všechno ostatní taky.
-          </div>
-        </div>
-        <div class="info-section">
-          <h3>Balení zásilek</h3>
-          <p>Každá láhev je pečlivě zabalena do novin (aktuálně z roku 2019, máme jich hodně), vložena do krabice a přelepena lepicí páskou. Křehké zboží označujeme nálepkou „NEKŘEHKÉ" — předcházíme tím zbytečnému zacházení v rukavičkách.</p>
-          <p>Při poškození zásilky kontaktujte dopravce. Nebo nás. Pravděpodobně vám nepomůže ani jeden.</p>
-        </div>
-        <div class="info-section">
-          <h3>🚨 Hledáme řidiče!</h3>
-          <div class="info-highlight">
-            Přijmeme řidiče na HPP nebo DPP. Požadavky: řidičský průkaz skupiny B (nebo aspoň dobrý úmysl ho mít), znalost jihu Moravy výhodou, silný žaludek nutností. Nabízíme: konkurenceschopný plat, stravenky a degustaci před každou jízdou.<br><br>
-            Životopisy zasílejte na <strong style="color:var(--gold)">prace@dvadracilikerna.cz</strong>
-          </div>
-        </div>
-        <div class="info-section">
-          <h3>Reklamace</h3>
-          <p>Reklamace přijímáme do 14 dní od doručení. Zásilku prosíme vraťte neotevřenou. Víme, že to je nereálné, ale zkusit to musíme.</p>
-        </div>
-      </div>
-    `;
-  } else if (page === 'kontakt') {
-    html = `
-      <div class="modal-header">
-        <div class="modal-cat">Spojte se s námi</div>
-        <h2>📬 Kontakt</h2>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div class="info-page">
-        <div class="info-section">
-          <h3>Kontaktní údaje</h3>
-          <div class="contact-grid">
-            <div class="contact-item">
-              <div class="c-label">📍 Adresa</div>
-              <div class="c-value">Likérka Dva Draci s.r.o.<br>Vinařská 47<br>691 02 Velké Bílovice</div>
-            </div>
-            <div class="contact-item">
-              <div class="c-label">📞 Telefon</div>
-              <div class="c-value">+420 737 421 069<br><span style="font-size:12px;color:var(--text-muted)">Po–Pá 6:00–22:00<br>(nebo než dojde zásoba)</span></div>
-            </div>
-            <div class="contact-item">
-              <div class="c-label">✉️ E-mail</div>
-              <div class="c-value">info@dvadracilikerna.cz<br><span style="font-size:12px;color:var(--text-muted)">Odpovídáme do 3–5 dní<br>(nebo po vystřízlivění)</span></div>
-            </div>
-            <div class="contact-item">
-              <div class="c-label">🏭 IČO / DIČ</div>
-              <div class="c-value">14370000<br>CZ14370000<br><span style="font-size:12px;color:var(--text-muted)">Plátci DPH od roku 1437</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="info-section">
-          <h3>Otevírací doba skladu</h3>
-          <p>🕓 <strong style="color:var(--text)">Pondělí – Pátek:</strong> Od nevidím do nevidím</p>
-          <p>🕓 <strong style="color:var(--text)">Sobota:</strong> Degustační den (příjezd na vlastní nebezpečí)</p>
-          <p>🚫 <strong style="color:var(--text)">Neděle:</strong> Zavřeno (regenerace)</p>
-          <div class="info-highlight">Osobní odběr doporučujeme předem telefonicky potvrdit. Sklad není vždy v provozuschopném stavu.</div>
-        </div>
-        <div class="info-section">
-          <h3>Napište nám</h3>
-          <div class="form-row"><input class="form-input" placeholder="Vaše jméno"></div>
-          <div class="form-row"><input class="form-input" placeholder="E-mail"></div>
-          <div class="form-row"><textarea class="form-input" rows="4" placeholder="Zpráva..." style="resize:vertical;font-family:Lato,sans-serif"></textarea></div>
-          <div class="form-row" style="margin-top:4px">
-            <button class="btn btn-primary" style="flex:1;padding:12px" onclick="fakeContactSend()">Odeslat zprávu</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modal').classList.add('open');
-}
-
-function fakeContactSend() {
-  closeModal();
-  showToast('✓ Zpráva odeslána! Ozveme se brzy.');
-}
-
-</script>
+<script defer data-domain="likerkadvadraci.cz" src="https://plausible.io/js/script.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -1559,8 +1408,12 @@ function openPage(page) {
           <h3>Náš tým</h3>
           <p><strong style="color:var(--text)">Vladimír Drak</strong> — Majitel, hlavní destilér, příležitostný pacient. Pracuje denně od 4:30 do 4:29.</p>
           <p><strong style="color:var(--text)">Mirka Draková</strong> — Účetní, PR manažerka, krizová komunikace s celní správou. Drží firmu při životě.</p>
-          <p><strong style="color:var(--text)">Franta "Chemik" Skála</strong> — Technolog. Vzdělání neuvedeno. Reference výborné.</p>
+          <p><strong style="color:var(--text)">Franta "Chemik" Skála</strong> — Technolog. Vzdělání neuvedeno. Reference výborné. Diplom umazán od lihu.</p>
           <p><strong style="color:var(--text)">Pes Slivovitz</strong> — Ochranka. V provozu od 22:00.</p>
+        </div>
+        <div class="info-section">
+          <h3>Přijímáme</h3>
+          <p><strong style="color:var(--text)">Skladník</strong> — Náš stávající skladník zmizel bezeslova v průběhu směny. Přijmeme zkušenou náhradu. Řidičský průkaz výhodou. Práce v čistém a bezpečném prostředí.</p>
         </div>
         <div class="info-section" style="padding-bottom:28px">
           <h3>Ocenění a certifikáty</h3>
